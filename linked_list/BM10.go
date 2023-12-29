@@ -1,5 +1,6 @@
 package linkedlist
 
+// 双指针
 func FindFirstCommonNode(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
 	if pHead1 == nil || pHead2 == nil {
 		return nil
