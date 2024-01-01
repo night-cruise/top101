@@ -54,7 +54,7 @@ func SortInList1(head *ListNode) *ListNode {
 // 	return list[i].Val > list[j].Val
 // }
 
-// 辅助数组
+// 使用辅助数组
 func SortInList2(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head

@@ -8,7 +8,7 @@ func ReverseBetween(head *ListNode, m int, n int) *ListNode {
 	dummy := &ListNode{Next: head}
 
 	preNode := dummy
-	for i := 1; i < m; i++ {
+	for i := 0; i < m-1; i++ {
 		preNode = preNode.Next
 	}
 	h := preNode.Next

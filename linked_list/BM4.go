@@ -1,38 +1,27 @@
 package linkedlist
 
-// 双指针
+// 双指针，使用一个辅助节点能更简单
 func Merge1(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
-	if pHead1 == nil {
-		return pHead2
-	}
-	if pHead2 == nil {
-		return pHead1
-	}
-	var p, q, k, newHead *ListNode
+	newHead := &ListNode{}
+	tail := newHead
 
-	p, q = pHead1, pHead2
-	for p != nil && q != nil {
+	for pHead1 != nil && pHead2 != nil {
 		var minNode *ListNode
-		if p.Val <= q.Val {
-			minNode, p = p, p.Next
+		if pHead1.Val < pHead2.Val {
+			minNode, pHead1 = pHead1, pHead1.Next
 		} else {
-			minNode, q = q, q.Next
+			minNode, pHead2 = pHead2, pHead2.Next
 		}
-		if k == nil {
-			k, newHead = minNode, minNode
-		} else {
-			k.Next = minNode
-			k = k.Next
-		}
+		tail.Next = minNode
+		tail = minNode
 	}
-
-	if p != nil {
-		k.Next = p
+	if pHead1 != nil {
+		tail.Next = pHead1
 	} else {
-		k.Next = q
+		tail.Next = pHead2
 	}
 
-	return newHead
+	return newHead.Next
 }
 
 // 递归

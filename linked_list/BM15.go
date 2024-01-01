@@ -2,17 +2,19 @@ package linkedlist
 
 // 双指针
 func DeleteDuplicatesBM15(head *ListNode) *ListNode {
-	dummy := &ListNode{Val: 101, Next: head}
-	q, p := dummy, dummy.Next
+	if head == nil || head.Next == nil {
+		return head
+	}
+	prev, cur := head, head.Next
 
-	for p != nil {
-		if q.Val == p.Val {
-			q.Next = p.Next
-			p = q.Next
+	for cur != nil {
+		if prev.Val == cur.Val {
+			prev.Next = cur.Next
+			cur = prev.Next
 		} else {
-			q, p = p, p.Next
+			prev, cur = cur, cur.Next
 		}
 	}
 
-	return dummy.Next
+	return head
 }

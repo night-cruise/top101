@@ -2,31 +2,26 @@ package linkedlist
 
 // 双指针
 func OddEvenList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil || head.Next.Next == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
-	var h1, h2, p1, p2 *ListNode
+	dummy1, dummy2 := &ListNode{}, &ListNode{}
+	tail1, tail2 := dummy1, dummy2
 
 	i := 1
-	for p := head; p != nil; p = p.Next {
+	for head != nil {
 		if i&1 > 0 {
-			if h1 == nil {
-				h1, p1 = p, p
-			} else {
-				p1.Next = p
-				p1 = p
-			}
+			tail1.Next = head
+			tail1 = head
 		} else {
-			if h2 == nil {
-				h2, p2 = p, p
-			} else {
-				p2.Next = p
-				p2 = p
-			}
+			tail2.Next = head
+			tail2 = head
 		}
 		i++
+		head = head.Next
 	}
-	p1.Next, p2.Next = h2, nil
+	tail2.Next = nil
+	tail1.Next = dummy2.Next
 
-	return h1
+	return dummy1.Next
 }

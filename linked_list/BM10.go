@@ -1,7 +1,7 @@
 package linkedlist
 
 // 双指针
-func FindFirstCommonNode(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
+func FindFirstCommonNode1(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
 	if pHead1 == nil || pHead2 == nil {
 		return nil
 	}
@@ -21,4 +21,19 @@ func FindFirstCommonNode(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
 	}
 
 	return p1
+}
+
+// 哈希表
+func FindFirstCommonNode2(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
+	m := map[*ListNode]bool{}
+
+	for pHead1 != nil {
+		m[pHead1] = true
+		pHead1 = pHead1.Next
+	}
+	for pHead2 != nil && !m[pHead2] {
+		pHead2 = pHead2.Next
+	}
+
+	return pHead2
 }

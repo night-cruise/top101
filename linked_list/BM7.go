@@ -1,7 +1,7 @@
 package linkedlist
 
 // 快慢指针
-func EntryNodeOfLoop(pHead *ListNode) *ListNode {
+func EntryNodeOfLoop1(pHead *ListNode) *ListNode {
 	slow, fast := pHead, pHead
 
 	for fast != nil && fast.Next != nil {
@@ -20,4 +20,16 @@ func EntryNodeOfLoop(pHead *ListNode) *ListNode {
 	}
 
 	return slow
+}
+
+// 哈希表
+func EntryNodeOfLoop2(pHead *ListNode) *ListNode {
+	m := map[*ListNode]bool{}
+
+	for pHead != nil && !m[pHead] {
+		m[pHead] = true
+		pHead = pHead.Next
+	}
+
+	return pHead
 }
