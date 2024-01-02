@@ -10,12 +10,10 @@ func MinNumberInRotateArray(nums []int) int {
 
 	for left < right {
 		mid := left + (right-left)/2
-		if nums[left] == nums[mid] && nums[mid] == nums[right] {
-			left++
-			right--
-		}
 		if nums[mid] > nums[right] {
 			left = mid + 1
+		} else if nums[mid] == nums[right] {
+			right--
 		} else {
 			right = mid
 		}

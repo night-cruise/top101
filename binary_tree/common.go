@@ -12,3 +12,10 @@ func Max(x, y int) int {
 	}
 	return y
 }
+
+func Absolute(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}

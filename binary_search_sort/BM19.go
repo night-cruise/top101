@@ -1,7 +1,5 @@
 package binarysearchsort
 
-// 这道题给的不严谨，题目中没有限定所有的元素一定是相等的
-
 // 遍历
 func FindPeakElement1(nums []int) int {
 	if len(nums) == 1 {
@@ -43,10 +41,10 @@ func FindPeakElement3(nums []int) int {
 
 	for left < right {
 		mid := left + (right-left)/2
-		if nums[mid+1] > nums[mid] { // 山峰一定在右边
-			left = mid + 1
+		if nums[mid+1] > nums[mid] {
+			left = mid + 1 // mid 的右边一定存在山峰
 		} else {
-			right = mid
+			right = mid // mid 的左边一定存在山峰
 		}
 	}
 

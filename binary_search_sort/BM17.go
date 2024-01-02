@@ -1,5 +1,6 @@
 package binarysearchsort
 
+// 二分查找
 func Search(nums []int, target int) int {
 	left, right := 0, len(nums)
 
