@@ -6,3 +6,10 @@ package recursionbacktracking
 // 2. 访问搜索位置，将搜索位置保存到访问数组中设置这个位置的搜索状态，将搜索位置的值保存到搜索路径中
 // 3. 递归子节点，访问其他的搜索位置
 // 4. 回溯，弹出搜索路径中保存的搜索位置的值，在访问数组中重置搜索位置的搜索状态
+
+func Max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
